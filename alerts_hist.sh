@@ -1,8 +1,8 @@
 #!/bin/bash
 
 
-missles_category ='"category":1'
-katbam_category ='"category":2'
+missles_category='"category":1'
+katbam_category='"category":2'
 
 #user input
 read path;
@@ -18,7 +18,7 @@ search_var = "${date}.*${missles_category}|${katbam_category}"
 #get only rows that matches the search query
 #get only the cities names
 #sort the cities
-sed 's/}/}\n/g' path | grep -E "${search_var}"| cut -d  '"' -f 4 | sort | uniq -c | tail -n +2
+sed 's/}/}\n/g' "$path" | grep -E "${search_var}"| cut -d  '"' -f 4 | sort | uniq -c | tail -n +2
 
 
 #original
