@@ -5,12 +5,12 @@ missles_category='"category":1'
 katbam_category='"category":2'
 
 #user input
-read path;
-read date;
+path=$1;
+date=$2;
 
 
 #serach for alerts in a chosen date from categories of "missles" or "katbam"
-search_var="${date}.*${missles_category}|${katbam_category}"
+search_var="${date}.*${missles_category}|${katbam_category}";
 
 
 # ========= PIPE for cleaning the data
@@ -18,7 +18,7 @@ search_var="${date}.*${missles_category}|${katbam_category}"
 #get only rows that matches the search query
 #get only the cities names
 #sort the cities
-sed 's/}/}\n/g' "${path}" | grep -E "${search_var}"| cut -d  '"' -f 4 | sort | uniq -c | tail -n +2
+wget --no-check-certificate -O "$path" | sed 's/}/}\n/g' "$path" | grep -E "${search_var}"| cut -d  '"' -f 4 | sort | uniq -c | tail -n +2
 
 
 #original
