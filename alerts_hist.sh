@@ -12,6 +12,6 @@ date=$2;
 #get only the cities names (using cut, awk , sed)
 #sort the cities, count cities and keep only uniqe names
 #delete unwanted [ and  spaces
-cat "$path" | sed 's/}/}\n/g' | grep -E "$date"| cut -d  ':' -f 2 | awk -F ',' '{ print $1 }' | sed 's/^"//; s/"$//' | sort | uniq -c | sort -n -r | sed 's#      ##'
+cat "$path" | sed 's/}/}\n/g' | grep -E "$date"| cut -d  ':' -f 2 | awk -F ',' '{ print $1 }' | sed 's/^"//; s/"$//' |  sed 's/\\//g' | sort | uniq -c | sort -n -r | sed 's#      ##'
 
 
